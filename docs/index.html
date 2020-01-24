@@ -55,62 +55,6 @@ summary: "Summary description here."
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Neptune login</span>
-<span class="kn">from</span> <span class="nn">neptune.sessions</span> <span class="kn">import</span> <span class="n">Session</span>
-<span class="kn">import</span> <span class="nn">getpass</span>
-
-<span class="n">api_token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Please enter your NeptuneML API token : &quot;</span><span class="p">)</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">api_token</span><span class="o">=</span><span class="n">api_token</span><span class="p">)</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="n">project_qualified_name</span><span class="o">=</span><span class="s1">&#39;danywin/fast-neptune&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Please enter your NeptuneML API token : ········
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Instantiating Session without specifying a backend is deprecated and will be removed in future versions. For current behaviour use `neptune.init(...)` or `Session.with_default_backend(...)
-WARNING: It is not secure to place API token in your source code. You should treat it as a password to your account. It is strongly recommended to use NEPTUNE_API_TOKEN environment variable instead. Remember not to upload source file with API token to any public repository.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MNIST-example&quot;</span>
-<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Demonstration of fast_neptune on MNIST using fastai&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
 </div>
  
 
