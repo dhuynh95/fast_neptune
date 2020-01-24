@@ -106,7 +106,7 @@ def add_cell_to_properties(cell: dict,properties: dict):
     """Adds all variables in the cell to the properties"""
     objs = _re_obj_def.findall(cell["source"])
 
-    objs = {obj : globals()[obj] for obj in objs}
+    objs = {obj : locals()[obj] for obj in objs}
 
     properties.update(objs)
 
