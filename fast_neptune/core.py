@@ -102,11 +102,11 @@ def is_property(cell):
     else:
         return False
 
-def add_cell_to_properties(cell: dict,properties: dict):
+def add_cell_to_properties(cell: dict,properties: dict,globs:dict):
     """Adds all variables in the cell to the properties"""
     objs = _re_obj_def.findall(cell["source"])
 
-    objs = {obj : locals()[obj] for obj in objs}
+    objs = {obj : globs[obj] for obj in objs}
 
     properties.update(objs)
 
@@ -120,7 +120,7 @@ def files_in_properties(properties:dict):
     return files
 
 # Cell
-def get_properties_from_cells(fn: str,return_files:bool = True):
+def get_properties_from_cells(fn: str,globs:dict,return_files:bool = True,):
     """Gets the properties from all #property cells"""
 
     nb = read_nb(fn)
@@ -129,7 +129,7 @@ def get_properties_from_cells(fn: str,return_files:bool = True):
 
     for cell in nb["cells"]:
         if is_property(cell):
-            add_cell_to_properties(cell,properties)
+            add_cell_to_properties(cell,properties,globs=globs)
 
     files = files_in_properties(properties)
     return properties,files
@@ -140,7 +140,7 @@ from neptune.projects import Project
 from neptune.experiments import Experiment
 
 @contextmanager
-def fast_experiment(project: Project,nb_name:str,return_files: bool = True,
+def fast_experiment(project: Project,nb_name:str,globs:dict,return_files: bool = True,
                     default:str = "main.py",**kwargs) -> Experiment:
     # First we get the code cells
     codes = get_codes(nb_name,default=default)
@@ -153,7 +153,7 @@ def fast_experiment(project: Project,nb_name:str,return_files: bool = True,
     codes = list(codes.keys())
 
     # We get the properties
-    properties,files = get_properties_from_cells(nb_name,return_files=return_files)
+    properties,files = get_properties_from_cells(nb_name,globs=globs,return_files=return_files)
     metadata = get_metadata()
     properties.update(metadata)
     properties["nb_name"] = nb_name
