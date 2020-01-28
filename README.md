@@ -71,7 +71,7 @@ project_name = "fast-neptune"
 project = session.get_project(project_qualified_name=f'{user_name}/{project_name}')
 ```
 
-    Please enter your NeptuneML API token : ········
+    Please enter your NeptuneML API token : 
     
 
     WARNING: Instantiating Session without specifying a backend is deprecated and will be removed in future versions. For current behaviour use `neptune.init(...)` or `Session.with_default_backend(...)
