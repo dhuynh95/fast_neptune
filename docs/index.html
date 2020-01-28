@@ -153,29 +153,6 @@ These include :</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Please enter your NeptuneML API token : ········
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Instantiating Session without specifying a backend is deprecated and will be removed in future versions. For current behaviour use `neptune.init(...)` or `Session.with_default_backend(...)
-WARNING: It is not secure to place API token in your source code. You should treat it as a password to your account. It is strongly recommended to use NEPTUNE_API_TOKEN environment variable instead. Remember not to upload source file with API token to any public repository.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -329,7 +306,7 @@ WARNING: It is not secure to place API token in your source code. You should tre
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/fast_neptune/imgs/parameters.PNG" alt="Parameters"></p>
+<p>{% include image.html file="/fast_neptune/./imgs/parameters.PNG" %}</p>
 
 </div>
 </div>
@@ -337,23 +314,23 @@ WARNING: It is not secure to place API token in your source code. You should tre
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the source code tab, we can have a look at the bits of code we registered, here the dataloading.
-<img src="/fast_neptune/imgs/code.PNG" alt="Code"></p>
+{% include image.html file="/fast_neptune/./imgs/code.PNG" %}</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the artifacts we also have the modules used in this notebook with their version :</p>
-<p><img src="/fast_neptune/imgs/requirements.PNG" alt="Requirements"></p>
+<p>In the artifacts we also have the modules used in this notebook with their version : 
+{% include image.html file="/fast_neptune/./imgs/requirements.PNG" %}</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, we logged the validation accuracy, which can be found in the Logs tab :</p>
-<p><img src="/fast_neptune/imgs/valid_score.PNG" alt="Parameters"></p>
+<p>Finally, we logged the validation accuracy, which can be found in the Logs tab : 
+{% include image.html file="/fast_neptune/./imgs/valid_score.PNG" %}</p>
 
 </div>
 </div>

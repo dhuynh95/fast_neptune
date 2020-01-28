@@ -71,13 +71,6 @@ project_name = "fast-neptune"
 project = session.get_project(project_qualified_name=f'{user_name}/{project_name}')
 ```
 
-    Please enter your NeptuneML API token : 
-    
-
-    WARNING: Instantiating Session without specifying a backend is deprecated and will be removed in future versions. For current behaviour use `neptune.init(...)` or `Session.with_default_backend(...)
-    WARNING: It is not secure to place API token in your source code. You should treat it as a password to your account. It is strongly recommended to use NEPTUNE_API_TOKEN environment variable instead. Remember not to upload source file with API token to any public repository.
-    
-
 Now we will start using `fast-neptune`.
 
 First we will record the code used to load the data and learner. To do so, we simply add `#code` to the cell used to load the data.
@@ -154,15 +147,13 @@ Now if we go on the link provided by NeptuneML we can have a closer look at this
 
 Here we can see the parameters that were registered, including epoch, learning rate, OS, and Python version.
 
-![Parameters](imgs\parameters.PNG)
+<img src="imgs\parameters.PNG">
 
 In the source code tab, we can have a look at the bits of code we registered, here the dataloading.
-![Code](imgs\code.PNG)
+<img src="imgs\code.PNG">
 
 In the artifacts we also have the modules used in this notebook with their version : 
-
-![Requirements](imgs\requirements.PNG)
+<img src="imgs\requirements.PNG">
 
 Finally, we logged the validation accuracy, which can be found in the Logs tab : 
-
-![Parameters](imgs\valid_score.PNG)
+<img src="imgs\valid_score.PNG">
