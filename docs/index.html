@@ -55,6 +55,158 @@ summary: "Summary description here."
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">fast_neptune.core</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Neptune login</span>
+<span class="kn">from</span> <span class="nn">neptune.sessions</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">import</span> <span class="nn">getpass</span>
+
+<span class="n">api_token</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Please enter your NeptuneML API token : &quot;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">api_token</span><span class="o">=</span><span class="n">api_token</span><span class="p">)</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="s2">&quot;danywin&quot;</span>
+<span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;fast-neptune&quot;</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get_project</span><span class="p">(</span><span class="n">project_qualified_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{user_name}</span><span class="s1">/</span><span class="si">{project_name}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#code</span>
+<span class="kn">from</span> <span class="nn">fastai.vision</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">untar_data</span><span class="p">(</span><span class="n">URLs</span><span class="o">.</span><span class="n">MNIST_SAMPLE</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ImageDataBunch</span><span class="o">.</span><span class="n">from_folder</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">learn</span> <span class="o">=</span> <span class="n">cnn_learner</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>A new version of the dataset is available.
+Downloading http://files.fast.ai/data/examples/mnist_sample
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+    <div>
+        <style>
+            /* Turns off some styling */
+            progress {
+                /* gets rid of default border in Firefox and Opera. */
+                border: none;
+                /* Needs to be in here for Safari polyfill so background images work as expected. */
+                background-size: auto;
+            }
+            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+                background: #F44336;
+            }
+        </style>
+      <progress value='3145728' class='' max='3214948', style='width:300px; height:20px; vertical-align: middle;'></progress>
+      97.85% [3145728/3214948 00:05<00:00]
+    </div>
+    
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ Download of http://files.fast.ai/data/examples/mnist_sample.tgz has failed after 5 retries
+ Fix the download manually:
+$ mkdir -p C:\Users\Daniel\.fastai\data
+$ cd C:\Users\Daniel\.fastai\data
+$ wget -c http://files.fast.ai/data/examples/mnist_sample.tgz
+$ tar -zxvf mnist_sample.tgz
+
+And re-run your code once the download is successful
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+An exception has occurred, use %tb to see the full traceback.
+
+<span class="ansi-red-intense-fg ansi-bold">SystemExit</span><span class="ansi-red-intense-fg ansi-bold">:</span> 1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nb_name</span> <span class="o">=</span> <span class="s2">&quot;index.ipynb&quot;</span>
+<span class="n">globs</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">fast_experiment</span><span class="p">(</span><span class="n">project</span><span class="p">,</span><span class="n">nb_name</span><span class="p">,</span><span class="n">globs</span><span class="p">)</span> <span class="k">as</span> <span class="n">exp</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://ui.neptune.ai/danywin/EnsembleDropout/e/EN-171
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 </div>
  
 
