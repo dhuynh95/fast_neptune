@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
+      title: core
       url: /core
     output: web
     title: fast_neptune

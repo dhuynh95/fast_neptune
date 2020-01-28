@@ -34,8 +34,20 @@ $         # end of line (since re.MULTILINE is passed)
 """, re.IGNORECASE | re.MULTILINE | re.VERBOSE)
 
 # Cell
-def is_code(cell, default="main.py"):
-    "Check if `cell` is to be exported and returns the name of the module to export it if provided"
+def is_code(cell: dict, default="main.py") -> str:
+    """Checks if `cell` is to be exported and returns the name of the module to export it if provided.
+
+    Parses the cell of a Jupyter Notebook, checks if it has the #code tag,
+    and returns the name of the module it is associated with, otherwise returns
+    None.
+
+    Args:
+        cell: dict of the JSON of the cell
+        default: name of the default module where all #code will be added
+    Returns:
+        The string of the name of the cell it is associated if #code is present,
+        else None
+    """
     if check_re(cell, _re_blank_code):
         return default
     tst = check_re(cell, _re_mod_code)
@@ -45,6 +57,8 @@ def is_code(cell, default="main.py"):
 from collections import defaultdict
 
 def get_codes(fn:str,default:str = "main.py") -> dict:
+    """Returns a dictionary where each key contains the name
+    of the module, and the value is the code in it."""
     nb = read_nb(fn)
 
     module_to_code = defaultdict(str)
@@ -60,6 +74,7 @@ def get_codes(fn:str,default:str = "main.py") -> dict:
 
 # Cell
 def get_metadata() -> dict:
+    """Returns metadata about the current running environment."""
     data = {
         "os":os.name,
         "system":platform.system(),
@@ -70,6 +85,7 @@ def get_metadata() -> dict:
 
 # Cell
 def create_requirements(fn):
+    """Create requirements file"""
     # Convert the notebook to a python file
     os.system(f"jupyter nbconvert --to=python {fn}")
 
@@ -142,6 +158,19 @@ from neptune.experiments import Experiment
 @contextmanager
 def fast_experiment(project: Project,nb_name:str,globs:dict,return_files: bool = True,
                     default:str = "main.py",**kwargs) -> Experiment:
+    """Creates a Neptune ML experiment, wrapped with meta data.
+
+    Args:
+        project: Neptune Project
+        nb_name: str name of the current notebook to be recorded
+        globs: dict of the global variables. Simply set globs = globals() and then pass it.
+        return_files: bool, True if we want to send files recorded in the parameters.
+        default: str name of the default code
+        kwargs: additional args passed to Neptune ML when the experiment is created
+
+    Returns:
+        exp: Neptune ML experiment
+    """
     # First we get the code cells
     codes = get_codes(nb_name,default=default)
 
