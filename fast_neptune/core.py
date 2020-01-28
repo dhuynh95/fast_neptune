@@ -39,7 +39,7 @@ def is_code(cell, default="main.py"):
     if check_re(cell, _re_blank_code):
         return default
     tst = check_re(cell, _re_mod_code)
-    return os.path.sep.join(tst.groups()[0].split('.')).replace("\\",".") if tst else None
+    return os.path.sep.join(tst.groups()[0].split('.')).replace("\\",".").replace("/",".") if tst else None
 
 # Cell
 from collections import defaultdict
