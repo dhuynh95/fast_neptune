@@ -146,15 +146,13 @@ Now if we go on the link provided by NeptuneML we can have a closer look at this
 
 Here we can see the parameters that were registered, including epoch, learning rate, OS, and Python version.
 
-![Parameters](imgs\parameters.PNG)
+<img src="imgs\parameters.PNG">
 
 In the source code tab, we can have a look at the bits of code we registered, here the dataloading.
-![Code](imgs\code.PNG)
+<img src="imgs\code.PNG">
 
 In the artifacts we also have the modules used in this notebook with their version : 
-
-![Requirements](imgs\requirements.PNG)
+<img src="imgs\requirements.PNG">
 
 Finally, we logged the validation accuracy, which can be found in the Logs tab : 
-
-![Parameters](imgs\valid_score.PNG)
+<img src="imgs\valid_score.PNG">
